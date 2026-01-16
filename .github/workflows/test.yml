@@ -1,0 +1,24 @@
+name: Run JUnit Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '21'  # Tumhara JDK version
+        distribution: 'temurin'
+
+    - name: Build and test with Maven
+      run: ./mvnw clean test
