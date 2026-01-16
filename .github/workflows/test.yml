@@ -17,8 +17,11 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v3
       with:
-        java-version: '21'  # Tumhara JDK version
+        java-version: '21'
         distribution: 'temurin'
+
+    - name: Make mvnw executable
+      run: chmod +x mvnw
 
     - name: Build and test with Maven
       run: ./mvnw clean test
