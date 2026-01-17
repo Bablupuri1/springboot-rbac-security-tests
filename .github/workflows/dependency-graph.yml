@@ -1,0 +1,20 @@
+name: Dependency Graph
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  dependency-submission:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Submit dependencies
+        uses: advanced-security/maven-dependency-submission-action@v3
